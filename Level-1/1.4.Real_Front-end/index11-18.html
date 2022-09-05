@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="sheet.css">
+    <title>Main Page</title>
+</head>
+<body>
+<div id="block_screen" class="hidden" onclick="hide(this)"></div>
+<div id="inputs">
+    <label for="input1"></label>
+    <textarea id="input1" rows="5" cols="50" oninput="storeLocal('input1')"></textarea>
+    <label for="input2"></label>
+    <textarea id="input2" rows="5" cols="50" oninput="storeCookies('input2')"></textarea>
+    <label for="input3"></label>
+    <textarea id="input3" rows="5" cols="50" oninput="storeSession('input3')"></textarea>
+
+    <div class="form-group" id="form-group">
+        <label class="label" for="file" id="label">
+            <span class="title">Добавить файл</span>
+        </label>
+        <input type="file" name="file" id="file" multiple>
+    </div>
+
+</div>
+<br>
+<button id="hide_screen">hide!</button>
+<div id="out">
+    <div id="inner"></div>
+</div>
+<form onsubmit="event.preventDefault();"><input type="submit" value="GO"></form>
+<div id="long">
+    <button onclick="scrollUp()" id="scrollBtn" title="Go to top">UP</button>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur atque quod rem suscipit. Beatae
+        doloremque doloribus nulla quos veritatis. Aut consequatur doloribus itaque iure maxime odio, sed veniam
+        voluptatibus? Dignissimos dolores excepturi officia possimus recusandae tempora tempore vitae. Accusantium
+        adipisci animi assumenda atque consectetur corporis delectus dolor dolore eveniet expedita explicabo, incidunt
+        ipsa labore laborum magni modi molestiae obcaecati odio officiis perferendis placeat porro quod ratione repellat
+        rerum sapiente totam ut vitae voluptatibus voluptatum! Aliquid amet aperiam architecto beatae distinctio eius ex
+        facere facilis fugit illum ipsum magni mollitia, nisi omnis possimus quos repudiandae saepe soluta totam vel.
+        Accusantium adipisci consequatur consequuntur dolores eveniet in iure nesciunt optio pariatur suscipit. Hic,
+        nobis quod! Accusantium amet aperiam asperiores assumenda aut autem, beatae cum dicta, dolore eaque earum error
+        esse est eum id impedit inventore iste iusto laborum maiores nemo numquam obcaecati pariatur perspiciatis
+        placeat provident quasi qui quia quos saepe soluta tenetur unde voluptas voluptate voluptatem voluptates
+        voluptatum. Aliquam, dicta dolore eligendi explicabo maxime quae quos repudiandae rerum. Ab atque dicta ducimus
+        earum fugit, inventore ipsa laboriosam mollitia nobis nostrum repudiandae ut vel, voluptatum. Aliquam aliquid
+        eaque exercitationem facere fugit illum impedit laboriosam nihil nulla, perferendis perspiciatis quas ratione?
+        Accusantium cum ea eius, facilis non optio rem rerum sed velit voluptates. Cumque, dolor mollitia quae quam sint
+        soluta temporibus unde ut. Aliquid aperiam aspernatur blanditiis cum, delectus, eaque eos et facilis iste
+        laboriosam magni natus odit officiis perferendis perspiciatis placeat quia quo repudiandae sunt tempora ut
+        voluptatem voluptatum. Alias, aliquam incidunt? Aspernatur dolorem doloribus enim eum excepturi, fugiat nostrum
+        optio perferendis rem sequi. Ad aperiam blanditiis cupiditate dignissimos eius enim excepturi explicabo, facilis
+        impedit itaque iusto modi nobis odio ratione repudiandae sed soluta suscipit, voluptatibus! Accusamus cumque
+        distinctio eveniet, illo modi ratione voluptate. Alias animi aut autem consectetur cum deleniti dolorum ea eaque
+        eum ex, exercitationem fuga ipsa iusto laudantium maxime nam nemo quam quod ratione sapiente similique sint unde
+        veniam? Blanditiis cum cumque doloremque dolores doloribus eius expedita in incidunt ipsum necessitatibus odio
+        pariatur, porro quia repellendus rerum, sapiente vero voluptates? Excepturi explicabo fuga harum laborum
+        necessitatibus nesciunt numquam rem, sapiente voluptate? Ab asperiores atque blanditiis cupiditate doloremque
+        enim est eum eveniet ex expedita, fugit, ipsam itaque labore, libero magnam numquam perferendis perspiciatis
+        provident reiciendis repellat sed unde vero vitae voluptates voluptatibus. Accusamus adipisci blanditiis,
+        eligendi excepturi iste minus quia repudiandae tempore totam voluptas? Eius fuga ipsam sit velit vitae. Ad
+        architecto corporis doloremque, error excepturi fugit impedit minus nemo nostrum odio, officia omnis quam soluta
+        tenetur vitae voluptas voluptatem! Ad asperiores aspernatur ducimus eaque eligendi expedita fugit id impedit
+        ipsam molestias mollitia nemo neque nisi perferendis qui quisquam quos, saepe similique sint temporibus.
+        Adipisci alias aperiam atque blanditiis commodi distinctio dolore doloremque dolores, dolorum ea eligendi eum ex
+        excepturi fugiat impedit laboriosam magnam magni natus nulla pariatur perferendis perspiciatis porro quae quam
+        quidem quod recusandae repellat repudiandae soluta sunt totam velit veniam, voluptates. Aperiam delectus ex
+        impedit, maiores quaerat qui quisquam reiciendis sapiente vel voluptatibus. Consequatur, unde, ut?</p>
+</div>
+<div id="main">
+    <div id="test1" class="hidden"></div>
+    <div id="test2" class="hidden"></div>
+    <div id="image" class="hidden"></div>
+    <div id="images" class="hidden"></div>
+    <div id="cursor" class="cursor_field">
+        <div id="cursor_child" class="cursor_field2"></div>
+    </div>
+</div>
+
+<script src="app11-18.js"></script>
+</body>
+</html>

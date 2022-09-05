@@ -1,0 +1,157 @@
+#main {
+    display: inline-flex;
+}
+
+#next {
+    display: inline-flex;
+}
+
+#cursor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 20px;
+    background-color: mintcream;
+    border-radius: 10px;
+    border-color: black;
+    border-style: groove;
+}
+
+.base {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    margin: 5px;
+    color: #f5f7fa;
+}
+
+.yellow_div {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    background-color: yellow;
+}
+
+.red_div {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-color: red;
+}
+
+.green_div {
+    width: 50px;
+    height: 20px;
+    margin: 5px;
+    background-color: green;
+}
+
+.hidden {
+    width: 0;
+    height: 0;
+    font-size: 0;
+}
+
+.cursor_field {
+    font-size: 3mm;
+    margin: 5px;
+}
+
+.cursor_field2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 -50% 0 0;
+    transform: translate(-50%, -50%)
+}
+
+#image {
+    width: 100px;
+}
+
+#inputs {
+    display: inline-flex;
+}
+
+#inputs label {
+    font-size: small;
+}
+
+#long {
+    height: 1500px;
+    width: 200px;
+}
+
+#scrollBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    z-index: 99;
+    font-size: 35px;
+    background-color: rosybrown;
+    padding: 0px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#scrollBtn:hover {
+    background-color: palegreen;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#out {
+    width: 200px;
+    height: 200px;
+    background-color: navajowhite;
+    padding: 50px 50px 50px 50px;
+}
+
+#inner {
+    margin: 50px 50px 50px 50px;
+    width: 100px;
+    height: 100px;
+    background-color: #FB6D3A;
+}
+
+.block {
+    margin: -9px;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+/*TODO explain*/
+
+.form-group {
+    padding: 1em;
+    margin: 1em;
+}
+
+.label {
+    width: 120px;
+    border: 2px dashed grey;
+    border-radius: 5px;
+    display: block;
+    padding: 1.2em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.label .title {
+    color: grey;
+    transition: 200ms color;
+}
+
+.label:hover,
+.label:hover .title {
+    color: #0d6efd;
+}

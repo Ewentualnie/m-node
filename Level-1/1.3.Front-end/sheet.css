@@ -1,0 +1,253 @@
+body {
+    background-color: #f5f7fa;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main_container {
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 1200px;
+    margin: 40px auto;
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* main container */
+.content_section {
+    padding: 100px 90px;
+}
+
+.about_me {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.main_content_title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.about_me_profession {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    margin: 0 0 20px 0;
+}
+
+.about_me_name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 55px;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+.about_me_description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #595959;
+    width: 400px;
+}
+
+.my_projects {
+    flex-direction: column;
+    width: 555px;
+    margin-bottom: 50px;
+}
+
+.my_projects_list {
+    padding: 0 0 0 20px;
+}
+
+.my_projects_item {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.my_projects_text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #f19854;
+    padding: 0 0 0 15px;
+}
+
+.my_experience {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #f19854;
+}
+
+.bold_bracket {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.orange {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FB6D3A;
+    margin: 0 0 0 3px;
+}
+
+.company_title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    margin: 0 0 10px 3px;
+}
+
+.work_time {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #A8A8A8;
+    margin-left: 3px;
+}
+
+.work_time_line {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+}
+
+.work_list {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #595959;
+    padding: 0 0 0 20px;
+}
+
+.management {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-left: 3px;
+}
+
+/* sidebar section */
+.sidebar_section {
+    border-radius: 10px 0 0 10px;
+    color: #ffff;
+    background-color: #1e2939;
+    width: 370px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.sidebar_title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.contacts_section {
+    margin: 50px 0 0 40px;
+}
+
+/* contacts section */
+.contact_section_type {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-right: 7px;
+}
+
+.contact_section_link {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #faa160;
+}
+
+.tech_skills_section {
+    margin: 50px 0 0 40px;
+}
+
+.tech_skills_list {
+    padding: 0 0 0 20px;
+}
+
+.tech_skills_item {
+    color: #FB6D3A;
+}
+
+.tech_skills_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    padding: 0 0 0 15px;
+}
+
+.soft_skills_section {
+    margin: 50px 0 0 40px;
+}
+
+.soft_skills_list {
+    padding: 0 0 0 20px;
+}
+
+.soft_skills_item {
+    color: #FB6D3A;
+}
+
+.soft_skills_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    padding: 0 0 0 5px;
+}
+
+.hyphen {
+    list-style-type: "—"
+}
+
+.list {
+    display: inline-flex;
+}
+
+.work_experience {
+    margin: 0 0 30px 0;
+}
+
+.work_expirience1 {
+    margin: 0 0 50px 0;
+}
