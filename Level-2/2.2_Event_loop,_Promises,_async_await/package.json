@@ -1,0 +1,11 @@
+{
+  "name": "test3",
+  "version": "1.0.0",
+  "description": "Level_2=>2.2",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Omni",
+  "license": "ISC"
+}
