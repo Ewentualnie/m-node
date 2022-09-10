@@ -4,8 +4,13 @@
   "description": "Level_2=>2.2",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "rm -rf ./dist && tsc",
+    "start": "node dist/1.js"
   },
   "author": "Omni",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+  }
 }
