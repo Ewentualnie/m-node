@@ -1,18 +1,11 @@
-function one(url: string): Promise<string> {
-    return fetch(url).then(value => value.json().then(value => value.ip));
+function first(callback: (ip: string) => void): void {
+    fetch("https://api.ipify.org?format=json")
+        .then(res => res.json())
+        .then(json => callback(json.ip));
 }
 
-function k(x: string) {
-    return x
+let second = async () => {
+    await first((ip: string) => console.log(ip));
 }
 
-async function two(ip: string, callback: (param: string) => Promise<string>) {
-    return await callback(ip);
-}
-
-async function t() {
-    console.log(await two("https://api.ipify.org?format=json", one))
-    // console.log(await two("https://api.ipify.org?format=json", k))
-}
-
-// t()
+second()
