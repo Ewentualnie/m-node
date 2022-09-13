@@ -21,7 +21,7 @@ let logUser1 = (url: string) => {
 logUser1(userUrl)
 
 let getUser2 = async (url: string): Promise<Record<string, string>> => {
-    return await (await fetch(url)).json()
+    return (await fetch(url)).json()
 }
 
 async function getFemale2(url: string, i: number = 1): Promise<Record<string, string>> {

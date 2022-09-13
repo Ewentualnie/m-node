@@ -7,7 +7,7 @@ async function getName(url: string): Promise<string> {
 }
 
 async function printNames1(): Promise<string[]> {
-    return  await Promise.all([
+    return await Promise.all([
         getName(url),
         getName(url),
         getName(url)
@@ -22,17 +22,16 @@ async function printNames2(): Promise<string[]> {
     return result
 }
 
-function printNames3() {
-    let names: string[] = []
-    let promises: Promise<Response>[] = [];
-    for (let i = 0; i < 3; i++) {
-        promises[i] = fetch(url);
-    }
-    for (let i = 0; i < promises.length; i++) {
-        let res: Promise<Response> = promises[i]
-        res.then(value => value.json()).then(value => names.push(value.name))
-    }
-    return names;
+async function printNames3(): Promise<string[]> {
+    return new Promise(resolve => {
+        let names: string[] = []
+        for (let i = 0; i < 3; i++) {
+            fetch(url)
+                .then(value => value.json())
+                .then(value => names.push(value.name))
+        }
+        return resolve(names);
+    })
 }
 
 // let result1 = printNames1();
@@ -42,4 +41,4 @@ function printNames3() {
 //     console.log(result1);
 //     console.log(result2);
 //     console.log(result3)
-// }, 2000);
+// }, 10000);
