@@ -4,7 +4,7 @@ const host = '127.0.0.1';
 
 const server = net.createServer(socket => {
     socket.write('Hello client!\n');
-    socket.on("data", data => console.log("server get: \"" + data + "\""))
+    socket.on("data", data => console.log("Server get: \"" + data + "\""))
 });
 
 function launchInfo() {
