@@ -8,7 +8,7 @@ const server = net.createServer(socket => {
 });
 
 function launchInfo() {
-    console.log("server started on port: " + port + ", host name is: " + host)
+    console.log("Server started on port: " + port + ", host name is: " + host)
 }
 
 server.listen(port, host, () => launchInfo())
