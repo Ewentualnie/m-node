@@ -3,13 +3,13 @@ const port = 8001;
 const host = '127.0.0.1';
 const message = 'hello HTTP server';
 
+let date = new Date();
+
 const post = {
     hostname: host,
     port: port,
     method: 'POST'
 };
-
-let date = new Date();
 
 let request = http.request(post, res => {
 
