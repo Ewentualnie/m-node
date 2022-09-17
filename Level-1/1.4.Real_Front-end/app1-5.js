@@ -11,7 +11,7 @@ restore.onclick = () => {
 
     let node = createDiv()
 
-    obj === null ? main.appendChild(node) : obj.remove() + main.appendChild(node)
+    obj === null ? main.appendChild(node) : obj.remove()
 }
 css.onclick = () => {
     let obj = document.getElementById("test1")
@@ -34,7 +34,7 @@ hideAll.onclick = () => {
 
 getForm.onclick = () => {
     let selector = document.getElementById("selector").value
-    let obj = document.querySelectorAll(selector)
+    let obj = document.querySelectorAll(`.${selector}`)
     for (let objElement of obj) {
         objElement.classList.contains("hidden") === false ?
             objElement.classList.add('hidden') :
@@ -53,8 +53,9 @@ function createDiv() {
 
 function alertHello(element) {
     alert("hello")
-    element.setAttribute("onclick","deleteDiv(this)")
+    element.setAttribute("onclick", "deleteDiv(this)")
 }
-function deleteDiv (element) {
+
+function deleteDiv(element) {
     element.remove()
 }
