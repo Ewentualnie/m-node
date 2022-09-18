@@ -1,5 +1,3 @@
-
-
 function outputHttpResponse(statusCode, statusMessage, headers, body) {
     console.log(`${statusCode} ${statusMessage}
 ${Object.keys(headers).map((value, index) =>
@@ -16,9 +14,7 @@ function processHttpRequest(method, uri, headers, body) {
         statusCode += 404
         statusMessage = "Not found"
         body = "not found"
-        // outputHttpResponse(statusCode, "Not found", headers, "not found");
     } else {
-        //TODO Check login & pass from file to body parameters
         let file
         try {
             file = require("fs")
