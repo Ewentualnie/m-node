@@ -6,9 +6,11 @@ const server = udp.createSocket('udp4');
 
 server.on('message', (data, info) => {
     console.log(`Client connected from: ${info.address}:${info.port}`)
-    console.log(`Client send: "${data}"`);
+    console.log(`${new Date().toDateString()}: client send: "${data}"`);
 
     server.send(data, info.port);
+
+    console.log("Session is closed")
 });
 
 server.bind(port, host, () =>
