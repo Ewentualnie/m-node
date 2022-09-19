@@ -4,11 +4,13 @@ const host = '127.0.0.1';
 
 const server = net.createServer(socket => {
     socket.on("data", data => {
-        console.log(`Client send: "${data}"`);
+        console.log(`${new Date().toDateString()}: client send: "${data}"`);
         this.data = data;
     })
-    socket.on('end', () =>
-        socket.write(this.data));
+    socket.on('end', () => {
+        console.log("Session is closed")
+        socket.write(this.data)
+    });
 });
 
 server.on('connection', socket =>
