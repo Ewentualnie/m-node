@@ -5,13 +5,13 @@ const host = '127.0.0.1';
 const server = udp.createSocket('udp4');
 
 server.on('message', (data, info) => {
-    console.log(`${new Date()}: client connected from: ${info.address}:${info.port}`)
-    console.log(`${new Date()}: client send: "${data}"`);
+    console.log(`${new Date().toUTCString()}: client connected from: ${info.address}:${info.port}`)
+    console.log(`${new Date().toUTCString()}: client send: "${data}"`);
 
     server.send(data, info.port);
 
-    console.log(`${new Date()}: session is closed`);
+    console.log(`${new Date().toUTCString()}: session is closed`);
 });
 
 server.bind(port, host, () =>
-    console.log(`${new Date()}: Server started on ${host}:${port}`));
+    console.log(`${new Date().toUTCString()}: Server started on ${host}:${port}`));
