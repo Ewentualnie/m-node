@@ -5,16 +5,19 @@ const host = '127.0.0.1';
 const server = http.createServer();
 
 server.on('connection', socket =>
-    console.log(`Client connected from: ${socket.localAddress}:${socket.localPort}`));
+    console.log(`${new Date()}: client connected from: ${socket.localAddress}:${socket.localPort}`));
 
 server.on('request', (req, res) => {
     req.on('data', data => {
-        console.log(`Client send: "${data}"`);
+        console.log(`${new Date()}: client send: "${data}"`);
         this.data = data;
     });
 
-    req.on('end', () => res.end(this.data));
+    req.on('end', () => {
+        console.log(`${new Date()}: session is closed`);
+        res.end(this.data);
+    });
 });
 
 server.listen(port, host, () =>
-    console.log(`Server started on ${host}:${port}`));
+    console.log(`${new Date()}: Server started on ${host}:${port}`));
