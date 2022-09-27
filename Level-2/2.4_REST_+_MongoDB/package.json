@@ -2,12 +2,14 @@
   "name": "2.4rest",
   "version": "1.0.0",
   "description": "rest and mongoDB",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/index.js",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon index.js",
-    "start": "node index.js"
+    "serve": "nodemon dist/index.js",
+    "build": "rm -rf ./dist && tsc",
+    "start": "node dist/index.js",
+    "restart": "rm -rf ./dist && tsc && node dist/index.js"
   },
   "keywords": [
     "express"
