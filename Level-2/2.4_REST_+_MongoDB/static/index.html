@@ -342,20 +342,20 @@ README:
                     const route = this.apiVersion === 'v1' ? '/items' : '/router';
                     const qs = {action: this.apiVersion === 'v1' ? '' : 'getItems'};
                     fetch(this.apiURL + this.apiVersion + route + this.backendSuffix + '?' + new URLSearchParams(qs), { 
-                        credentials: 'include',
+                        // credentials: 'include',
                         method: this.apiVersion === 'v1' ? 'GET' : 'POST',
                     })
                         .then(res => res.json())
                         .then((response) => {
-                            if (response.error === 'forbidden') {
-                                this.step = 'login';
-                            } else {
+                            // if (response.error === 'forbidden') {
+                            //     this.step = 'login';
+                            // } else {
                                 this.tasks = response.items.map((item) => {
                                     item.editable = false;
                                     return item;
                                 })
                                 this.step = 'items';
-                            }
+                            // }
                         }).catch((error) => {
                             this.step = 'error';
                         })
@@ -384,11 +384,11 @@ README:
                     if (this.new_task.text.trim() !== '') {
                         let request = JSON.stringify({ text: this.new_task.text });
                         const route = this.apiVersion === 'v1' ? '/items' : '/router';
-                        const qs = {action: this.apiVersion === 'v1' ? '' : 'createItem'};
+                        const qs = {action: this.apiVersion === 'v2' ? '' : 'createItem'};
                         fetch(this.apiURL + this.apiVersion + route + this.backendSuffix + '?' + new URLSearchParams(qs), {
                             method: this.apiVersion === 'v1' ? 'POST' : 'POST',
                             body: request,
-                            credentials: 'include',
+                            // credentials: 'include',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
