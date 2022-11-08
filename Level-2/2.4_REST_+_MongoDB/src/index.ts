@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static('static'))
 app.use(cors())
 
-let dataBase: any = JSON.parse(fs.readFileSync("dataBase.json", "utf8"));
+let dataBase: any = loadDB();
 
 app.use(express.json());
 
@@ -30,6 +30,10 @@ app.route('/api/v1/items')
         res.send(JSON.stringify(deleteTask(req.body)));
         saveToDB();
     });
+
+function loadDB() {
+    return JSON.parse(fs.readFileSync("dataBase.json", "utf8"));
+}
 
 function saveToDB() {
     fs.writeFileSync("dataBase.json", JSON.stringify(dataBase));
@@ -58,11 +62,7 @@ function deleteTask(req: { id: number }): { ok: boolean } {
 }
 
 function findTaskById(req: { id: number }): number {
-    return dataBase.find((el: { id: number }, index: number) => {
-        if (el.id == req.id) {
-            return index;
-        }
-    })
+    return dataBase.findIndex((el: { id: number }) => el.id === req.id)
 }
 
 app.listen(port, () => console.log("server started on port: " + port))
