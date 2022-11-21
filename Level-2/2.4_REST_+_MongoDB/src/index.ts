@@ -6,10 +6,14 @@ import * as fs from "fs";
 const port = process.env.PORT ?? 3005;
 const app = express();
 
+type Element = { id: number, text: string, checked: boolean };
+type Data = Array<Element>;
+
+
 app.use(express.static('static'))
 app.use(cors())
 
-let dataBase: any = loadDB();
+let dataBase: Data = loadDB();
 
 app.use(express.json());
 
@@ -31,11 +35,11 @@ app.route('/api/v1/items')
         saveToDB();
     });
 
-function loadDB() {
+function loadDB(): Data {
     return JSON.parse(fs.readFileSync("dataBase.json", "utf8"));
 }
 
-function saveToDB() {
+function saveToDB(): void {
     fs.writeFileSync("dataBase.json", JSON.stringify(dataBase));
 }
 
@@ -49,7 +53,7 @@ function addTask(text: string): number {
     return element.id;
 }
 
-function editTask(newTask: { id: number, text: string, checked: boolean }): { id: number, text: string, checked: boolean } {
+function editTask(newTask: Element): Element {
     let task = dataBase[newTask.id - 1]
     task.text = newTask.text;
     task.checked = newTask.checked;
