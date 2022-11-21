@@ -5,7 +5,7 @@ const host = '127.0.0.1';
 const server = net.createServer(socket => {
     socket.on("data", data => {
         console.log(`${new Date().toUTCString()}: client send: "${data}"`);
-        this.data = data;
+        this.Data = data;
     })
     socket.on('end', () => {
         console.log(`${new Date().toUTCString()}: session is closed`);

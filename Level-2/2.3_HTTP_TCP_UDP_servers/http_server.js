@@ -10,7 +10,7 @@ server.on('connection', socket =>
 server.on('request', (req, res) => {
     req.on('data', data => {
         console.log(`${new Date().toUTCString()}: client send: "${data}"`);
-        this.data = data;
+        this.Data = data;
     });
 
     req.on('end', () => {
