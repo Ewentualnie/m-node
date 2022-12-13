@@ -1,72 +1,58 @@
-import express from 'express'
+import express, {Express} from 'express'
 import cors from 'cors'
-import * as fs from "fs";
+import {MongoClient, UpdateResult, WithId} from "mongodb";
 
-
+const ObjectId = require("mongodb").ObjectId
 const port = process.env.PORT ?? 3005;
-const app = express();
+const app: Express = express();
+const client = new MongoClient("mongodb://root:root@localhost:27017");
+const collection = client.db("mongoDb").collection("todolist")
 
-type Element = { id: number, text: string, checked: boolean };
-type Data = Array<Element>;
+type Element = { id: string, text: string, checked: boolean };
 
-
-app.use(express.static('static'))
-app.use(cors())
-
-let dataBase: Data = loadDB();
-
+app.use(express.static('static'));
 app.use(express.json());
+app.use(cors());
 
 app.route('/api/v1/items')
-    .get(function (req, res) {
-        res.end(JSON.stringify({items: dataBase}));
-        saveToDB();
+    .get(async (req, res) => {
+        res.end(JSON.stringify({items: await loadDb()}));
+        await client.close();
     })
-    .post(function (req, res) {
-        res.end(JSON.stringify({id: addTask(req.body.text)}));
-        saveToDB();
+    .post(async (req, res) => {
+        res.end(JSON.stringify({id: await addTask(req.body)}));
+        await client.close();
     })
-    .put(function (req, res) {
-        res.end(JSON.stringify(editTask(req.body)));
-        saveToDB();
+    .put(async (req, res) => {
+        res.end(JSON.stringify(await editTask(req.body)));
+        await client.close();
     })
-    .delete(function (req, res) {
-        res.send(JSON.stringify(deleteTask(req.body)));
-        saveToDB();
+    .delete(async (req, res) => {
+        res.send(JSON.stringify({ok: await deleteTask(req.body)}));
+        await client.close();
     });
 
-function loadDB(): Data {
-    return JSON.parse(fs.readFileSync("dataBase.json", "utf8"));
+async function loadDb(): Promise<WithId<Document>[]> {
+    await client.connect()
+    return collection.find({}).toArray().then()
 }
 
-function saveToDB(): void {
-    fs.writeFileSync("dataBase.json", JSON.stringify(dataBase));
+async function addTask(element: { text: string }): Promise<typeof ObjectId> {
+    await client.connect()
+    return collection.insertOne({"text": element.text, "checked": false})
+        .then(result => result.insertedId)
 }
 
-function addTask(text: string): number {
-    let element = {
-        id: dataBase.length == 0 ? 1 : dataBase[dataBase.length - 1].id + 1,
-        text: text,
-        checked: false
-    }
-    dataBase.push(element);
-    return element.id;
+async function editTask(task: Element): Promise<UpdateResult> {
+    await client.connect()
+    return collection.updateOne({_id: ObjectId(task.id)}, {$set: {text: task.text, checked: task.checked}});
 }
 
-function editTask(newTask: Element): Element {
-    let task = dataBase[newTask.id - 1]
-    task.text = newTask.text;
-    task.checked = newTask.checked;
-    return task;
+async function deleteTask(task: Element): Promise<boolean> {
+    await client.connect()
+    return collection.deleteOne({_id: ObjectId(task.id)})
+        .then(result => result.acknowledged)
 }
 
-function deleteTask(req: { id: number }): { ok: boolean } {
-    dataBase.splice(findTaskById(req), 1)
-    return {ok: true};
-}
-
-function findTaskById(req: { id: number }): number {
-    return dataBase.findIndex((el: { id: number }) => el.id === req.id)
-}
-
+client.connect().then(() => console.log("connect to mongoDb is success"))
 app.listen(port, () => console.log("server started on port: " + port))
