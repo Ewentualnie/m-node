@@ -46,6 +46,9 @@ async function deleteTask(task: Element): Promise<boolean> {
         .then(result => result.acknowledged)
 }
 
-client.connect().then(() => console.log("connect to mongoDb is success"));
+client.connect().then(() => {
+    console.log("connect to mongoDb is success")
+    client.close().then()
+});
 
 module.exports = router;
