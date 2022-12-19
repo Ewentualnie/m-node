@@ -25,7 +25,7 @@ README:
         }
         h1{
             font-size: 60px;
-            font-family: Arial; 
+            font-family: Arial;
             font-weight: bold;
             color: black;
             margin-left: 30px;
@@ -268,7 +268,7 @@ README:
             <task @task_del="deleteTask(task._id)"
                     @task_edit="editTask(index)"
                     @task_done="markAsDone(index, task._id)"
-                    @save="save(index, task.id)"
+                    @save="save(index, task._id)"
                     @disable="disable(index)"
                     :data="task"
                     :index="index+1"
@@ -384,7 +384,7 @@ README:
                     if (this.new_task.text.trim() !== '') {
                         let request = JSON.stringify({ text: this.new_task.text });
                         const route = this.apiVersion === 'v1' ? '/items' : '/router';
-                        const qs = {action: this.apiVersion === 'v2' ? '' : 'createItem'};
+                        const qs = {action: this.apiVersion === 'v1' ? '' : 'createItem'};
                         fetch(this.apiURL + this.apiVersion + route + this.backendSuffix + '?' + new URLSearchParams(qs), {
                             method: this.apiVersion === 'v1' ? 'POST' : 'POST',
                             body: request,
