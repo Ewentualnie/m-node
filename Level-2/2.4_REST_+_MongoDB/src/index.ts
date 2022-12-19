@@ -1,11 +1,11 @@
 import express from 'express'
+import session from "express-session";
 import cors from 'cors'
 import api_v1 from './routers/router_v1'
 import api_v2 from './routers/router_v2'
 
 const port = process.env.PORT ?? 3005;
 const app = express();
-const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 app.use(express.static('static'));
