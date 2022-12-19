@@ -1,10 +1,10 @@
-import express, {Express} from 'express'
+import express from 'express'
 import cors from 'cors'
+import api_v1 from './routers/router_v1'
+import api_v2 from './routers/router_v2'
 
-const apiV1 = require('../routes/items.js');
-const apiV2 = require('../routes/items2.js');
 const port = process.env.PORT ?? 3005;
-const app: Express = express();
+const app = express();
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
@@ -18,7 +18,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }));
-app.use('/api/v1', apiV1);
-app.use('/api/v2', apiV2)
 
-app.listen(port, () => console.log("server started on port: " + port))
+app.use('/api/v1', api_v1);
+app.use('/api/v2', api_v2);
+
+app.listen(port, () => console.log("Server started on port: " + port))
