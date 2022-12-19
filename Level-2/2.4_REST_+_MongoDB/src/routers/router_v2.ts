@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express";
-import {load, add, edit, del} from './mongo'
+import {getTasks, addTask, editTask, deleteTask} from "../controllers/dbcontroller";
 
 const router = express.Router();
 const path: string = '/router';
@@ -21,21 +21,21 @@ router.all(path, async (req: Request, res: Response) => {
             break;
         }
         case ('getItems'): {
-            res.end(JSON.stringify({items: await load()}));
+            await getTasks(req, res)
             break;
         }
-        case ('addItem'): {
-            res.end(JSON.stringify({id: await add(req.body)}));
+        case ('createItem'): {
+            await addTask(req, res)
             break;
         }
         case ('editItem'): {
-            res.end(JSON.stringify(await edit(req.body)));
+            await editTask(req, res)
             break;
         }
         case ('deleteItem'): {
-            res.send(JSON.stringify({ok: await del(req.body)}));
+            await deleteTask(req, res)
             break;
         }
     }
 })
-module.exports = router;
+export default router;
