@@ -26,6 +26,6 @@ export const del = async (task: Element): Promise<boolean> => {
 }
 
 client.connect().then(() => {
-    console.log("connect to mongoDb is success")
+    console.log("Connect to mongoDb is success")
     client.close().then()
 });
