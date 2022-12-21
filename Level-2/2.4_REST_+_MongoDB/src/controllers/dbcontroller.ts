@@ -1,6 +1,6 @@
 import {add, del, edit, load} from '../mongo.js'
 import {Request, Response} from "express";
-import {FileStore} from '../index'
+import {FileStore} from './sessioncontroller'
 
 
 export async function getTasks(req: Request, res: Response) {

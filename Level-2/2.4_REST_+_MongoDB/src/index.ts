@@ -1,18 +1,13 @@
 import express from 'express'
-import session from "express-session";
 import cors from 'cors'
+import session from './controllers/sessioncontroller';
 import api_v1 from './routers/router_v1'
 import api_v2 from './routers/router_v2'
 
 const port = process.env.PORT ?? 3005;
 const app = express();
-export const FileStore = require('session-file-store')(session);
-app.use(session({
-    store: new FileStore({}),
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
-}));
+
+app.use(session);
 app.use(express.static('static'));
 app.use(express.json());
 app.use(cors());

@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {addUser, getUser} from "../mongo";
-import {FileStore} from '../index'
+import {FileStore} from './sessioncontroller'
 
 const ok: { ok: boolean } = {ok: true}
 
