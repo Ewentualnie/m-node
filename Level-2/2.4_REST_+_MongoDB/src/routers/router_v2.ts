@@ -1,23 +1,22 @@
 import express, {Request, Response} from "express";
 import {getTasks, addTask, editTask, deleteTask} from "../controllers/dbcontroller";
+import {login, logout, registration} from "../controllers/authcontroller";
 
 const router = express.Router();
 const path: string = '/router';
 
-const ok: { ok: boolean } = {ok: true}
-
 router.all(path, async (req: Request, res: Response) => {
     switch (req.query.action) {
         case ('login'): {
-            res.send(JSON.stringify(ok));
+            await login(req, res)
             break;
         }
         case ('logout'): {
-            res.send(JSON.stringify(ok));
+            await logout(req, res)
             break;
         }
         case ('register'): {
-            res.send(JSON.stringify(ok));
+            await registration(req, res)
             break;
         }
         case ('getItems'): {
