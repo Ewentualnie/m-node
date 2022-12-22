@@ -1,4 +1,4 @@
-import {add, del, edit, load} from '../mongo.js'
+import {add, del, edit, load} from '../mongo'
 import {Request, Response} from "express";
 import {FileStore} from './sessioncontroller'
 
