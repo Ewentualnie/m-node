@@ -1,11 +1,11 @@
-import {MongoClient, ObjectId, UpdateResult, WithId} from "mongodb";
+import {MongoClient, ObjectId, UpdateResult, WithId, Document} from "mongodb";
 
 const client = new MongoClient("mongodb://root:root@localhost:27017");
 const tasks = client.db("mongoDb").collection("todolist");
 const users = client.db("mongoDb").collection("users");
 
 type Element = { id: string, text: string, checked: boolean, userId: string };
-type User = { login: string, pass: string };
+export type User = { _id: string, login: string, password: string };
 
 export async function load(userId: string): Promise<WithId<Document>[]> {
     await client.connect()
@@ -34,15 +34,15 @@ export async function del(task: Element, userId: string): Promise<boolean> {
         .then(result => result.acknowledged)
 }
 
-export async function addUser(user: User): Promise<ObjectId> {
+export async function addUser(user: User, pass: string): Promise<ObjectId> {
     await client.connect()
-    return users.insertOne({login: user.login, password: user.pass})
+    return users.insertOne({login: user.login, password: pass})
         .then(result => result.insertedId)
 }
 
-export async function getUser(user: User) {
-    await client.connect()
-    return users.findOne({login: user.login, password: user.pass})
+export async function getUser(user: User): Promise<User | null> {
+    await client.connect();
+    return users.findOne<User>({login: user.login});
 }
 
 client.connect().then(() => {
