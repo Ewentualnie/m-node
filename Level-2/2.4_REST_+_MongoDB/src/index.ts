@@ -4,7 +4,7 @@ import session from './controllers/sessioncontroller';
 import api_v1 from './routers/router_v1'
 import api_v2 from './routers/router_v2'
 
-const port = process.env.PORT ?? 3005;
+const port: string = process.env.PORT ?? '3005';
 const app = express();
 
 app.use(session);
