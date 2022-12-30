@@ -282,10 +282,10 @@ README:
                 <span><button @click="addTask" class="button new_todo_button">Додати</button></span>
             </label>
             <h3 class="status_title">{{'Active tasks: ' + tasks.length}}</h3>
-            <task @task_del="deleteTask(task._id)"
+            <task @task_del="deleteTask(task.id)"
                   @task_edit="editTask(index)"
-                  @task_done="markAsDone(index, task._id)"
-                  @save="save(index, task._id)"
+                  @task_done="markAsDone(index, task.id)"
+                  @save="save(index, task.id)"
                   @disable="disable(index)"
                   :data="task"
                   :index="index+1"
@@ -422,8 +422,8 @@ README:
             },
             updateTask: function (index, id) {
                 let request = JSON.stringify({
-                    text: this.tasks[index].text,
                     id: id,
+                    text: this.tasks[index].text,
                     checked: this.tasks[index].checked
                 });
                 const route = this.apiVersion === 'v1' ? '/items' : '/router';
