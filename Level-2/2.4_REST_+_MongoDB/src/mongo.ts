@@ -48,7 +48,4 @@ export function getUser(user: User): Promise<User | null> {
     return client.connect().then(() => users.findOne<User>({login: user.login}))
 }
 
-client.connect().then(() => {
-    console.log("Connection to mongoDb is successful")
-    client.close().then()
-});
+client.connect().then(() => client.close().then(() => console.log("Connection to mongoDb is successful")));
