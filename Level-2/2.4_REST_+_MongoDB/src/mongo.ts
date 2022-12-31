@@ -15,7 +15,7 @@ export function add(task: Task, userId: ObjectId): Promise<boolean> {
         .then(() => users.updateOne(
             {_id: userId},
             {$push: {tasks: {id: (new ObjectId()).toString(), text: task.text, checked: false}}})
-            .then(value => value.acknowledged))
+            .then(value => value.modifiedCount > 0))
 }
 
 export function edit(task: Task, userId: ObjectId): Promise<UpdateResult> {
