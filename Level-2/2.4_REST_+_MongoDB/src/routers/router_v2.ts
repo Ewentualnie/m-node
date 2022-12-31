@@ -8,33 +8,33 @@ const path: string = '/router';
 router.all(path, async (req: Request, res: Response) => {
     switch (req.query.action) {
         case ('login'): {
-            await login(req, res)
+            await login(req, res);
             break;
         }
         case ('logout'): {
-            await logout(req, res)
+            await logout(req, res);
             break;
         }
         case ('register'): {
-            await registration(req, res)
+            await registration(req, res);
             break;
         }
         case ('getItems'): {
-            await getTasks(req, res)
+            await getTasks(req, res);
             break;
         }
         case ('createItem'): {
-            await addTask(req, res)
+            await addTask(req, res);
             break;
         }
         case ('editItem'): {
-            await editTask(req, res)
+            await editTask(req, res);
             break;
         }
         case ('deleteItem'): {
-            await deleteTask(req, res)
+            await deleteTask(req, res);
             break;
         }
     }
-})
+});
 export default router;

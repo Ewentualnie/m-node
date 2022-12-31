@@ -242,26 +242,6 @@ README:
         <h1 class="logo">Ш<span style="color: #27ae60">++</span></h1>
     </header>
     <main>
-        <div class="settings">
-            <h2>Application settings:</h2>
-            <label>
-                Api URL:
-                <input type="text" v-model="apiURL">
-            </label>
-            <div>
-                Choose backend's language:
-                <button @click="backendLanguage='PHP'" :class="{'selected': backendLanguage === 'PHP'}">PHP</button>
-                <button @click="backendLanguage='JS'" :class="{'selected': backendLanguage === 'JS'}">JS</button>
-            </div>
-            <div>
-                Choose api version:
-                <button @click="apiVersion='v1'" :class="{'selected': apiVersion === 'v1'}">v1</button>
-                <button @click="apiVersion='v2'" :class="{'selected': apiVersion === 'v2'}">v2</button>
-            </div>
-            <div>
-                <button @click="getTasks()" class="primary">GO!</button>
-            </div>
-        </div>
         <div class="wrapper login" v-if="step === 'login'">
             <h1>Account access</h1>
             <div class="LoginInput">
@@ -353,6 +333,9 @@ README:
             backendSuffix() {
                 return this.backendLanguage === 'PHP' ? '.php' : '';
             },
+        },
+        mounted: function () {
+            this.getTasks();
         },
         methods: {
             getTasks: function () {

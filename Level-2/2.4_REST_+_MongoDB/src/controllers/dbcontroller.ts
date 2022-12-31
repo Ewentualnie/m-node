@@ -7,26 +7,26 @@ export function getTasks(req: Request, res: Response) {
     if (FileStore[req.sessionID] != undefined && FileStore[req.sessionID].userId != undefined) {
         load(FileStore[req.sessionID].userId).then((value) => value ?
             res.status(200).send(JSON.stringify({items: value})) :
-            res.status(404).send(JSON.stringify({error: "can't load tasks"})))
+            res.status(404).send(JSON.stringify({error: "can't load tasks"})));
     } else {
-        res.status(404).send(JSON.stringify({error: 'forbidden'}))
+        res.status(404).send(JSON.stringify({error: 'forbidden'}));
     }
 }
 
 export function addTask(req: Request, res: Response) {
     add(req.body, FileStore[req.sessionID].userId).then(value => value ?
         res.status(200).send(JSON.stringify({id: value})) :
-        res.status(404).send(JSON.stringify({error: "can't add task"})))
+        res.status(404).send(JSON.stringify({error: "can't add task"})));
 }
 
 export function editTask(req: Request, res: Response) {
     edit(req.body, FileStore[req.sessionID].userId).then(value => value ?
         res.status(200).send(JSON.stringify(value)) :
-        res.status(404).send(JSON.stringify({error: "can't edit task"})))
+        res.status(404).send(JSON.stringify({error: "can't edit task"})));
 }
 
 export function deleteTask(req: Request, res: Response) {
     del(req.body, FileStore[req.sessionID].userId).then(value => value ?
         res.status(200).send(JSON.stringify({ok: value})) :
-        res.status(404).send(JSON.stringify({error: "can't delete task"})))
+        res.status(404).send(JSON.stringify({error: "can't delete task"})));
 }
